@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda Online</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+            background-color: var(--light);
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .product-price .old-price {
+            font-size: 1rem;
+            color: #95a5a6;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        
+        .product-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        
+        .btn-cart:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-view {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-view:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--light);
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 30px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .btn-cart {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-modal.active {
+            display: block;
+            transform: translateX(0);
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Mi<span>Tienda</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li class="cart-icon" id="cartIcon">
+                            🛒 <span class="cart-count">0</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Descubre Nuestros Productos Exclusivos</h1>
+            <p>Encuentra lo que necesitas al mejor precio con envío rápido y seguro. Calidad garantizada.</p>
+            <a href="#products" class="btn btn-primary">Ver Productos</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <div class="products-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="product-badge">Nuevo</div>
+                    <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=Producto+1" alt="Producto 1" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Auriculares Inalámbricos</h3>
+                        <div class="product-price">
+                            <span class="old-price">$59.99</span>
+                            $39.99
+                        </div>
+                        <p class="product-description">Auriculares con cancelación de ruido y 20h de batería. Calidad de sonido premium.</p>
+                        <div class="product-actions">
+                            <button class="btn-cart" data-id="1" data-name="Auriculares Inalámbricos" data-price="39.99">Añadir al Carrito</button>
+                            <button class="btn-view">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="product-badge">Oferta</div>
+                    <img src="https://via.placeholder.com/300x200/e74c3c/ffffff?text=Producto+2" alt="Producto 2" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Smartwatch Deportivo</h3>
+                        <div class="product-price">
+                            <span class="old-price">$129.99</span>
+                            $89.99
+                        </div>
+                        <p class="product-description">Monitor de actividad, frecuencia cardiaca y notificaciones inteligentes. Resistente al agua.</p>
+                        <div class="product-actions">
+                            <button class="btn-cart" data-id="2" data-name="Smartwatch Deportivo" data-price="89.99">Añadir al Carrito</button>
+                            <button class="btn-view">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=Producto+3" alt="Producto 3" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Tablet 10 Pulgadas</h3>
+                        <div class="product-price">$199.99</div>
+                        <p class="product-description">Pantalla Full HD, 64GB de almacenamiento, perfecta para trabajo y entretenimiento.</p>
+                        <div class="product-actions">
+                            <button class="btn-cart" data-id="3" data-name="Tablet 10 Pulgadas" data-price="199.99">Añadir al Carrito</button>
+                            <button class="btn-view">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/9b59b6/ffffff?text=Producto+4" alt="Producto 4" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Altavoz Bluetooth</h3>
+                        <div class="product-price">$49.99</div>
+                        <p class="product-description">Sonido estéreo de 20W, batería de 12h, resistente al agua IPX7. Ideal para exteriores.</p>
+                        <div class="product-actions">
+                            <button class="btn-cart" data-id="4" data-name="Altavoz Bluetooth" data-price="49.99">Añadir al Carrito</button>
+                            <button class="btn-view">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <div class="product-badge">Más Vendido</div>
+                    <img src="https://via.placeholder.com/300x200/f39c12/ffffff?text=Producto+5" alt="Producto 5" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Cámara Deportiva</h3>
+                        <div class="product-price">$149.99</div>
+                        <p class="product-description">4K Ultra HD, resistente al agua, wide angle. Perfecta para capturar tus aventuras.</p>
+                        <div class="product-actions">
+                            <button class="btn-cart" data-id="5" data-name="Cámara Deportiva" data-price="149.99">Añadir al Carrito</button>
+                            <button class="btn-view">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 6 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/1abc9c/ffffff?text=Producto+6" alt="Producto 6" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Teclado Mecánico</h3>
+                        <div class="product-price">$79.99</div>
+                        <p class="product-description">Retroiluminación RGB, switches azules, diseño ergonómico para gaming y trabajo.</p>
+                        <div class="product-actions">
+                            <button class="btn-cart" data-id="6" data-name="Teclado Mecánico" data-price="79.99">Añadir al Carrito</button>
+                            <button class="btn-view">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3 class="feature-title">Envío Gratis</h3>
+                    <p>En compras superiores a $50. Recibe tu pedido en 24-48h.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">↩️</div>
+                    <h3 class="feature-title">Devolución Fácil</h3>
+                    <p>30 días para devolver tu producto si no estás satisfecho.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Pago Seguro</h3>
+                    <p>Transacciones protegidas con encriptación de última generación.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h3 class="feature-title">Soporte 24/7</h3>
+                    <p>Nuestro equipo de atención al cliente está siempre disponible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Suscríbete a Nuestro Boletín</h2>
+            <p>Recibe ofertas exclusivas, novedades de productos y descuentos especiales antes que nadie.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="newsletter-btn">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MiTienda</h3>
+                    <p>Tu destino para encontrar los mejores productos al mejor precio. Calidad y servicio garantizados.</p>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                        <li><a href="#">Nuevos Lanzamientos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="#">Electrónica</a></li>
+                        <li><a href="#">Hogar</a></li>
+                        <li><a href="#">Deportes</a></li>
+                        <li><a href="#">Moda</a></li>
+                        <li><a href="#">Juguetes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>📍 Calle Principal 123, Ciudad</li>
+                        <li>📞 +1 234 567 890</li>
+                        <li>✉️ info@mitienda.com</li>
+                        <li>🕒 Lun-Vie: 9:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MiTienda. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="closeCart">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Los productos del carrito se añadirán aquí -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">$0.00</span>
+        </div>
+    </div>
+
+    <script>
+        // Funcionalidad del carrito
+        let cart = [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const overlay = document.getElementById('overlay');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCount = document.querySelector('.cart-count');
+        
+        // Abrir carrito
+        cartIcon.addEventListener('click', () => {
+            cartModal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Cerrar carrito
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Añadir productos al carrito
+        document.querySelectorAll('.btn-cart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const id = e.target.getAttribute('data-id');
+                const name = e.target.getAttribute('data-name');
+                const price = parseFloat(e.target.getAttribute('data-price'));
+                
+                // Verificar si el producto ya está en el carrito
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Mostrar confirmación
+                e.target.textContent = '✓ Añadido';
+                setTimeout(() => {
+                    e.target.textContent = 'Añadir al Carrito';
+                }, 2000);
+            });
+        });
+        
+        // Actualizar carrito
+        function updateCart() {
+            // Actualizar contador
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Actualizar lista de productos
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Tu carrito está vacío</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                            <div>
+                                <h4 style="margin: 0 0 5px;">${item.name}</h4>
+                                <p style="margin: 0; color: #e74c3c; font-weight: bold;">$${item.price.toFixed(2)}</p>
+                            </div>
+                            <div style="display: flex; align-items: center;">
+                                <button class="btn-quantity" data-id="${item.id}" data-action="decrease">-</button>
+                                <span style="margin: 0 10px;">${item.quantity}</span>
+                                <button class="btn-quantity" data-id="${item.id}" data-action="increase">+</button>
+                                <button class="btn-remove" data-id="${item.id}" style="margin-left: 10px; background: none; border: none; color: #e74c3c; cursor: pointer;">✕</button>
+                            </div>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+            }
+            
+            // Actualizar total
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+            
+            // Añadir event listeners a los botones de cantidad y eliminar
+            document.querySelectorAll('.btn-quantity').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    const action = e.target.getAttribute('data-action');
+                    updateQuantity(id, action);
+                });
+            });
+            
+            document.querySelectorAll('.btn-remove').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    removeFromCart(id);
+                });
+            });
+        }
+        
+        // Actualizar cantidad
+        function updateQuantity(id, action) {
+            const item = cart.find(item => item.id === id);
+            
+            if (action === 'increase') {
+                item.quantity += 1;
+            } else if (action === 'decrease' && item.quantity > 1) {
+                item.quantity -= 1;
+            }
+            
+            updateCart();
+        }
+        
+        // Eliminar producto
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+        
+        // Newsletter form
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            alert(`¡Gracias por suscribirte con ${email}! Te hemos enviado un correo de confirmación.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
