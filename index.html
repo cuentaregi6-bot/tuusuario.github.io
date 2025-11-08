@@ -439,53 +439,84 @@
             background-color: #c0392b;
         }
         
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>MITTendu</h3>
-                <p>Tu destino para encontrar los mejores productos al mejor precio. Calidad y servicio garantizados.</p>
-                <div class="social-links">
-                    <a href="#">FB</a>
-                    <a href="#">IG</a>
-                    <a href="#">TW</a>
-                    <a href="#">YT</a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>Enlaces Rápidos</h3>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#products">Productos</a></li>
-                    <li><a href="#locations">Ubicaciones</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Categorías</h3>
-                <ul>
-                    <li><a href="#">Lentes</a></li>
-                    <li><a href="#">Electrónica</a></li>
-                    <li><a href="#">Hogar</a></li>
-                    <li><a href="#">Instrumentos</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <ul>
-                    <li>📍 Lima: 938987642</li>
-                    <li>📍 Piura/Cajamarca: 900030047</li>
-                    <li>✉️ info@mittendu.com</li>
-                    <li>🕒 Lun-Vie: 9:00-18:00</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 MITTendu. Todos los derechos reservados.</p>
-        </div>
-    </div>
-</footer>
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
         
         /* Responsive */
         @media (max-width: 768px) {
@@ -637,23 +668,165 @@
         <div class="container">
             <h2 class="section-title">Productos Destacados</h2>
             <div class="products-grid">
-                <!-- Producto 1: Lentes Multifunción -->
-                <div class="product-card">
-                    <div class="product-badge">Nuevo</div>
-                   <img src="1.png" alt="Lentes multifunción que cambian con el sol" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Lentes Multifunción</h3>
-                        <div class="product-price">
-                            <span class="old-price">40</span>
-                            25
-                        </div>
-                        <p class="product-description">Lentes que cambian con el sol - Protección UV y estilo moderno</p>
-                        <div class="product-actions">
-                            <button class="btn-cart" data-id="1" data-name="Lentes Multifunción" data-price="25">Añadir al Carrito</button>
-                            <button class="btn-view">Ver Detalles</button>
-                        </div>
-                    </div>
-                </div>
+[← IMAGEN GRANDE →]   (flechas laterales)
+[• • • • • •]         (puntos indicadores)
+🔄 Automático cada 5 segundos
+📱 Funciona en móviles
+
+## 🚀 **TE DOY EL CÓDIGO COMPLETO** para el primer producto:
+
+```html
+<div class="product-card">
+    <div class="product-badge">Nuevo</div>
+    
+    <!-- Carrusel Completo -->
+    <div class="product-carousel">
+        <!-- Imágenes -->
+        <div class="carousel-images">
+            <img src="1.png" class="carousel-img active" alt="Lentes vista 1">
+            <img src="2.png" class="carousel-img" alt="Lentes vista 2">
+            <img src="3.png" class="carousel-img" alt="Lentes vista 3">
+            <img src="4.png" class="carousel-img" alt="Lentes vista 4">
+            <img src="5.png" class="carousel-img" alt="Lentes vista 5">
+            <img src="6.png" class="carousel-img" alt="Lentes vista 6">
+        </div>
+        
+        <!-- Flechas -->
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+        
+        <!-- Puntos -->
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+    
+    <div class="product-info">
+        <h3 class="product-title">Lentes Multifunción</h3>
+        <!-- ... resto igual ... -->
+    </div>
+</div>
+
+<style>
+.product-carousel {
+    position: relative;
+}
+
+.carousel-images {
+    position: relative;
+    height: 220px;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.carousel-img.active {
+    opacity: 1;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 2;
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    z-index: 2;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+}
+
+.dot.active {
+    background: white;
+}
+</style>
+
+<script>
+// JavaScript para el carrusel
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.product-carousel');
+    
+    carousels.forEach(carousel => {
+        const images = carousel.querySelectorAll('.carousel-img');
+        const dots = carousel.querySelectorAll('.dot');
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        let currentIndex = 0;
+        
+        function showImage(index) {
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            images[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentIndex = index;
+        }
+        
+        // Flechas
+        prevBtn.addEventListener('click', () => {
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) newIndex = images.length - 1;
+            showImage(newIndex);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            let newIndex = currentIndex + 1;
+            if (newIndex >= images.length) newIndex = 0;
+            showImage(newIndex);
+        });
+        
+        // Puntos
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showImage(index));
+        });
+        
+        // Automático cada 5 segundos
+        setInterval(() => {
+            let newIndex = currentIndex + 1;
+            if (newIndex >= images.length) newIndex = 0;
+            showImage(newIndex);
+        }, 5000);
+    });
+});
+</script>
                 
                 <!-- Producto 2: Lentes Blue Defense -->
                 <div class="product-card">
