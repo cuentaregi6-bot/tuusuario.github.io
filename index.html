@@ -1265,5 +1265,75 @@ function initCarousel(carousel) {
     }, 5000);
 }
 </script>
+    <!-- Iconos Flotantes -->
+<div class="floating-icons">
+    <!-- Yape y Envío lado a lado -->
+    <div class="floating-row">
+        <div class="floating-icon yape-icon">
+            <span>YAPE</span>
+        </div>
+        <div class="floating-icon shipping-icon">
+            <span>🚚</span>
+        </div>
+    </div>
+    <!-- WhatsApp abajo -->
+    <a href="https://wa.me/51900030074?text=Hola,%20me%20interesa%20sus%20productos" 
+       class="floating-icon whatsapp-icon" 
+       target="_blank">
+        <span>Chatear</span>
+    </a>
+</div>
+
+<style>
+.floating-icons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.floating-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+}
+
+.floating-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.floating-icon:hover {
+    transform: scale(1.1);
+}
+
+.yape-icon {
+    background: #6b0d91; /* Morado Yape */
+    font-size: 10px;
+}
+
+.shipping-icon {
+    background: #3498db; /* Azul de tu tienda */
+    font-size: 18px;
+}
+
+.whatsapp-icon {
+    background: #25D366; /* Verde WhatsApp */
+    width: 60px;
+    height: 60px;
+    font-size: 12px;
+    text-align: center;
+}
+</style>
 </body>
 </html>
