@@ -1048,51 +1048,293 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
+    <!-- === PEGA AQUÍ EL CÓDIGO COMPLETO DEL CARRUSEL === -->
+    <section class="wide-carousel-section">
+        <div class="wide-carousel">
+            <div class="carousel-track">
+                <!-- Imagen 1 -->
+                <div class="carousel-slide active">
+                    <img src="1.png" alt="Lentes Multifunción">
+                    <div class="slide-content">
+                        <h3>Lentes Multifunción</h3>
+                        <p>Protección UV y estilo moderno</p>
+                        <span class="price">25</span>
+                    </div>
+                </div>
+                
+                <!-- Imagen 2 -->
+                <div class="carousel-slide">
+                    <img src="7.png" alt="Lentes Blue Defense">
+                    <div class="slide-content">
+                        <h3>Lentes Blue Defense</h3>
+                        <p>Protección anti luz azul</p>
+                        <span class="price">15</span>
+                    </div>
+                </div>
+                
+                <!-- Imagen 3 -->
+                <div class="carousel-slide">
+                    <img src="10.png" alt="Lentes 6 en 1">
+                    <div class="slide-content">
+                        <h3>Lentes 6 en 1</h3>
+                        <p>Múltiples protecciones</p>
+                        <span class="price">55</span>
+                    </div>
+                </div>
+                
+                <!-- Imagen 4 -->
+                <div class="carousel-slide">
+                    <img src="14.png" alt="Purificador de Agua">
+                    <div class="slide-content">
+                        <h3>Purificador de Agua</h3>
+                        <p>Agua cristalina y pura</p>
+                        <span class="price">35</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Flechas de navegación -->
+            <button class="carousel-arrow prev-arrow">&#10094;</button>
+            <button class="carousel-arrow next-arrow">&#10095;</button>
+            
+            <!-- Indicadores -->
+            <div class="carousel-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
+        </div>
+    </section>
+
+    <style>
+    /* Carrusel Ancho */
+    .wide-carousel-section {
+        width: 100%;
+        margin: 60px 0;
+        background: linear-gradient(135deg, var(--secondary), var(--dark));
+        padding: 40px 0;
+    }
+
+    .wide-carousel {
+        position: relative;
+        max-width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-slide {
+        min-width: 100%;
+        position: relative;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .carousel-slide.active {
+        opacity: 1;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .slide-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .slide-content h3 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .slide-content p {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        opacity: 0.9;
+    }
+
+    .slide-content .price {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--accent);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* Flechas */
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.8);
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-arrow:hover {
+        background: white;
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .prev-arrow {
+        left: 20px;
+    }
+
+    .next-arrow {
+        right: 20px;
+    }
+
+    /* Indicadores */
+    .carousel-indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        z-index: 10;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .indicator.active {
+        background: white;
+        transform: scale(1.2);
+    }
+
+    .indicator:hover {
+        background: rgba(255,255,255,0.8);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .carousel-slide img {
+            height: 300px;
+        }
+        
+        .slide-content h3 {
+            font-size: 1.5rem;
+        }
+        
+        .slide-content .price {
+            font-size: 2rem;
+        }
+        
+        .carousel-arrow {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+        }
+    }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.wide-carousel');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevArrow = document.querySelector('.prev-arrow');
+        const nextArrow = document.querySelector('.next-arrow');
+        
+        let currentIndex = 0;
+        let autoPlayInterval;
+
+        function showSlide(index) {
+            // Ocultar todas las slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            // Mostrar slide actual
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            let newIndex = currentIndex + 1;
+            if (newIndex >= slides.length) newIndex = 0;
+            showSlide(newIndex);
+        }
+
+        function prevSlide() {
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) newIndex = slides.length - 1;
+            showSlide(newIndex);
+        }
+
+        // Event listeners para flechas
+        nextArrow.addEventListener('click', nextSlide);
+        prevArrow.addEventListener('click', prevSlide);
+
+        // Event listeners para indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+                resetAutoPlay();
+            });
+        });
+
+        // Autoplay
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 5000); // Cambia cada 5 segundos
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        // Pausar autoplay al interactuar
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoPlayInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            startAutoPlay();
+        });
+
+        // Iniciar autoplay
+        startAutoPlay();
+    });
+    </script>
+    <!-- === FIN DEL CARRUSEL === -->
+
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>MITTendu</h3>
-                    <p>Tu destino para encontrar los mejores productos al mejor precio. Calidad y servicio garantizados.</p>
-                    <div class="social-links">
-                        <a href="#">FB</a>
-                        <a href="#">IG</a>
-                        <a href="#">TW</a>
-                        <a href="#">YT</a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#products">Productos</a></li>
-                        <li><a href="#locations">Ubicaciones</a></li>
-                        <li><a href="#contact">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Categorías</h3>
-                    <ul>
-                        <li><a href="#">Lentes</a></li>
-                        <li><a href="#">Electrónica</a></li>
-                        <li><a href="#">Hogar</a></li>
-                        <li><a href="#">Instrumentos</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li>?? Lima: 938987642</li>
-                        <li>?? Piura/Cajamarca: 900030047</li>
-                        <li>?? info@mittendu.com</li>
-                        <li>?? Lun-Vie: 9:00-18:00</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2024 MITTendu. Todos los derechos reservados.</p>
-            </div>
+            <!-- ... todo tu footer igual ... -->
         </div>
     </footer>
 
