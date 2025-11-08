@@ -1352,6 +1352,33 @@ function initCarousel(carousel) {
         showSlide(newIndex);
     }, 5000);
 }
-</script>
+</script>    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/51900030047?text=Hola,%20me%20interesa%20sus%20productos" 
+       class="whatsapp-float" 
+       target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" width="30" height="30">
+    </a>
+
+    <style>
+    .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background: #25D366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        z-index: 1000;
+        transition: transform 0.3s;
+    }
+
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+    }
+    </style>
 </body>
 </html>
