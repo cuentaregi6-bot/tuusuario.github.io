@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1037,260 +1038,62 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </section>
     <!-- Newsletter -->
-    <!-- Carrusel Elegante -->
-    <section class="elegant-carousel">
-        <div class="carousel-container">
-            <div class="carousel-slides">
-                <!-- Slide 1 -->
-                <div class="slide active">
-                    <img src="1.png" alt="Lentes Multifunción">
-                    <div class="slide-info">
-                        <h3>Lentes Multifunción</h3>
-                        <p>25</p>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="slide">
-                    <img src="7.png" alt="Lentes Blue Defense">
-                    <div class="slide-info">
-                        <h3>Lentes Blue Defense</h3>
-                        <p>15</p>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 -->
-                <div class="slide">
-                    <img src="10.png" alt="Lentes 6 en 1">
-                    <div class="slide-info">
-                        <h3>Lentes 6 en 1</h3>
-                        <p>55</p>
-                    </div>
-                </div>
-                
-                <!-- Slide 4 -->
-                <div class="slide">
-                    <img src="14.png" alt="Purificador de Agua">
-                    <div class="slide-info">
-                        <h3>Purificador de Agua</h3>
-                        <p>35</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Flechas -->
-            <button class="carousel-arrow prev">‹</button>
-            <button class="carousel-arrow next">›</button>
-            
-            <!-- Puntos -->
-            <div class="carousel-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
+    <section class="newsletter" id="contact">
+        <div class="container">
+            <h2>Suscríbete a Nuestro Boletín</h2>
+            <p>Recibe ofertas exclusivas, novedades de productos y descuentos especiales antes que nadie.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="newsletter-btn">Suscribirse</button>
+            </form>
         </div>
     </section>
-
-    <style>
-    .elegant-carousel {
-        width: 100%;
-        margin: 40px 0;
-        padding: 20px 0;
-        background: #f8f9fa;
-    }
-
-    .carousel-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .carousel-slides {
-        position: relative;
-        height: 250px; /* Mucho más delgado */
-    }
-
-    .slide {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        display: flex;
-        align-items: center;
-    }
-
-    .slide.active {
-        opacity: 1;
-    }
-
-    .slide img {
-        width: 40%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .slide-info {
-        width: 60%;
-        padding: 20px;
-        background: white;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .slide-info h3 {
-        font-size: 1.5rem;
-        color: #2c3e50;
-        margin-bottom: 10px;
-    }
-
-    .slide-info p {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #e74c3c;
-        margin: 0;
-    }
-
-    .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(52, 152, 219, 0.8);
-        color: white;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        font-size: 20px;
-        cursor: pointer;
-        z-index: 10;
-        transition: all 0.3s ease;
-    }
-
-    .carousel-arrow:hover {
-        background: #3498db;
-        transform: translateY(-50%) scale(1.1);
-    }
-
-    .prev { left: 10px; }
-    .next { right: 10px; }
-
-    .carousel-dots {
-        position: absolute;
-        bottom: 15px;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.5);
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .dot.active {
-        background: white;
-        transform: scale(1.2);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .carousel-slides {
-            height: 200px;
-        }
-        
-        .slide-info h3 {
-            font-size: 1.2rem;
-        }
-        
-        .slide-info p {
-            font-size: 1.5rem;
-        }
-        
-        .carousel-arrow {
-            width: 35px;
-            height: 35px;
-            font-size: 16px;
-        }
-    }
-    </style>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.querySelector('.prev');
-        const nextBtn = document.querySelector('.next');
-        
-        let currentIndex = 0;
-        let autoPlay;
-
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            currentIndex = index;
-        }
-
-        function nextSlide() {
-            let newIndex = currentIndex + 1;
-            if (newIndex >= slides.length) newIndex = 0;
-            showSlide(newIndex);
-        }
-
-        function prevSlide() {
-            let newIndex = currentIndex - 1;
-            if (newIndex < 0) newIndex = slides.length - 1;
-            showSlide(newIndex);
-        }
-
-        // Eventos
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => showSlide(index));
-        });
-
-        // Autoplay
-        function startAutoPlay() {
-            autoPlay = setInterval(nextSlide, 4000);
-        }
-
-        function stopAutoPlay() {
-            clearInterval(autoPlay);
-        }
-
-        // Pausar al interactuar
-        const carousel = document.querySelector('.carousel-container');
-        carousel.addEventListener('mouseenter', stopAutoPlay);
-        carousel.addEventListener('mouseleave', startAutoPlay);
-
-        startAutoPlay();
-    });
-    </script>
-    <!-- === FIN DEL CARRUSEL === -->
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <!-- ... todo tu footer igual ... -->
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MITTendu</h3>
+                    <p>Tu destino para encontrar los mejores productos al mejor precio. Calidad y servicio garantizados.</p>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#products">Productos</a></li>
+                        <li><a href="#locations">Ubicaciones</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="#">Lentes</a></li>
+                        <li><a href="#">Electrónica</a></li>
+                        <li><a href="#">Hogar</a></li>
+                        <li><a href="#">Instrumentos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>?? Lima: 938987642</li>
+                        <li>?? Piura/Cajamarca: 900030047</li>
+                        <li>?? info@mittendu.com</li>
+                        <li>?? Lun-Vie: 9:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 MITTendu. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
