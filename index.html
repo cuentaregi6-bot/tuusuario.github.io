@@ -1037,248 +1037,214 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </section>
     <!-- Newsletter -->
-    <section class="newsletter" id="contact">
-        <div class="container">
-            <h2>Suscríbete a Nuestro Boletín</h2>
-            <p>Recibe ofertas exclusivas, novedades de productos y descuentos especiales antes que nadie.</p>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
-                <button type="submit" class="newsletter-btn">Suscribirse</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- === PEGA AQUÍ EL CÓDIGO COMPLETO DEL CARRUSEL === -->
-    <section class="wide-carousel-section">
-        <div class="wide-carousel">
-            <div class="carousel-track">
-                <!-- Imagen 1 -->
-                <div class="carousel-slide active">
+    <!-- Carrusel Elegante -->
+    <section class="elegant-carousel">
+        <div class="carousel-container">
+            <div class="carousel-slides">
+                <!-- Slide 1 -->
+                <div class="slide active">
                     <img src="1.png" alt="Lentes Multifunción">
-                    <div class="slide-content">
+                    <div class="slide-info">
                         <h3>Lentes Multifunción</h3>
-                        <p>Protección UV y estilo moderno</p>
-                        <span class="price">25</span>
+                        <p>25</p>
                     </div>
                 </div>
                 
-                <!-- Imagen 2 -->
-                <div class="carousel-slide">
+                <!-- Slide 2 -->
+                <div class="slide">
                     <img src="7.png" alt="Lentes Blue Defense">
-                    <div class="slide-content">
+                    <div class="slide-info">
                         <h3>Lentes Blue Defense</h3>
-                        <p>Protección anti luz azul</p>
-                        <span class="price">15</span>
+                        <p>15</p>
                     </div>
                 </div>
                 
-                <!-- Imagen 3 -->
-                <div class="carousel-slide">
+                <!-- Slide 3 -->
+                <div class="slide">
                     <img src="10.png" alt="Lentes 6 en 1">
-                    <div class="slide-content">
+                    <div class="slide-info">
                         <h3>Lentes 6 en 1</h3>
-                        <p>Múltiples protecciones</p>
-                        <span class="price">55</span>
+                        <p>55</p>
                     </div>
                 </div>
                 
-                <!-- Imagen 4 -->
-                <div class="carousel-slide">
+                <!-- Slide 4 -->
+                <div class="slide">
                     <img src="14.png" alt="Purificador de Agua">
-                    <div class="slide-content">
+                    <div class="slide-info">
                         <h3>Purificador de Agua</h3>
-                        <p>Agua cristalina y pura</p>
-                        <span class="price">35</span>
+                        <p>35</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Flechas de navegación -->
-            <button class="carousel-arrow prev-arrow">&#10094;</button>
-            <button class="carousel-arrow next-arrow">&#10095;</button>
+            <!-- Flechas -->
+            <button class="carousel-arrow prev">‹</button>
+            <button class="carousel-arrow next">›</button>
             
-            <!-- Indicadores -->
-            <div class="carousel-indicators">
-                <span class="indicator active"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
+            <!-- Puntos -->
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </div>
     </section>
 
     <style>
-    /* Carrusel Ancho */
-    .wide-carousel-section {
+    .elegant-carousel {
         width: 100%;
-        margin: 60px 0;
-        background: linear-gradient(135deg, var(--secondary), var(--dark));
-        padding: 40px 0;
+        margin: 40px 0;
+        padding: 20px 0;
+        background: #f8f9fa;
     }
 
-    .wide-carousel {
-        position: relative;
-        max-width: 100%;
+    .carousel-container {
+        max-width: 1200px;
         margin: 0 auto;
-        overflow: hidden;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .carousel-track {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .carousel-slide {
-        min-width: 100%;
         position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .carousel-slides {
+        position: relative;
+        height: 250px; /* Mucho más delgado */
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         opacity: 0;
         transition: opacity 0.5s ease;
+        display: flex;
+        align-items: center;
     }
 
-    .carousel-slide.active {
+    .slide.active {
         opacity: 1;
     }
 
-    .carousel-slide img {
-        width: 100%;
-        height: 400px;
+    .slide img {
+        width: 40%;
+        height: 100%;
         object-fit: cover;
-        display: block;
     }
 
-    .slide-content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(0,0,0,0.8));
-        color: white;
-        padding: 30px;
-        text-align: center;
+    .slide-info {
+        width: 60%;
+        padding: 20px;
+        background: white;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
-    .slide-content h3 {
-        font-size: 2rem;
+    .slide-info h3 {
+        font-size: 1.5rem;
+        color: #2c3e50;
         margin-bottom: 10px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
-    .slide-content p {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-        opacity: 0.9;
-    }
-
-    .slide-content .price {
-        font-size: 2.5rem;
+    .slide-info p {
+        font-size: 2rem;
         font-weight: bold;
-        color: var(--accent);
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        color: #e74c3c;
+        margin: 0;
     }
 
-    /* Flechas */
     .carousel-arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(255,255,255,0.8);
+        background: rgba(52, 152, 219, 0.8);
+        color: white;
         border: none;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
-        font-size: 24px;
+        font-size: 20px;
         cursor: pointer;
         z-index: 10;
         transition: all 0.3s ease;
     }
 
     .carousel-arrow:hover {
-        background: white;
+        background: #3498db;
         transform: translateY(-50%) scale(1.1);
     }
 
-    .prev-arrow {
-        left: 20px;
-    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
 
-    .next-arrow {
-        right: 20px;
-    }
-
-    /* Indicadores */
-    .carousel-indicators {
+    .carousel-dots {
         position: absolute;
-        bottom: 20px;
+        bottom: 15px;
         left: 0;
         right: 0;
         display: flex;
         justify-content: center;
-        gap: 10px;
-        z-index: 10;
+        gap: 8px;
     }
 
-    .indicator {
-        width: 12px;
-        height: 12px;
+    .dot {
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: rgba(255,255,255,0.5);
         cursor: pointer;
         transition: all 0.3s ease;
     }
 
-    .indicator.active {
+    .dot.active {
         background: white;
         transform: scale(1.2);
     }
 
-    .indicator:hover {
-        background: rgba(255,255,255,0.8);
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
-        .carousel-slide img {
-            height: 300px;
+        .carousel-slides {
+            height: 200px;
         }
         
-        .slide-content h3 {
+        .slide-info h3 {
+            font-size: 1.2rem;
+        }
+        
+        .slide-info p {
             font-size: 1.5rem;
         }
         
-        .slide-content .price {
-            font-size: 2rem;
-        }
-        
         .carousel-arrow {
-            width: 40px;
-            height: 40px;
-            font-size: 20px;
+            width: 35px;
+            height: 35px;
+            font-size: 16px;
         }
     }
     </style>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const carousel = document.querySelector('.wide-carousel');
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const prevArrow = document.querySelector('.prev-arrow');
-        const nextArrow = document.querySelector('.next-arrow');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
         
         let currentIndex = 0;
-        let autoPlayInterval;
+        let autoPlay;
 
         function showSlide(index) {
-            // Ocultar todas las slides
             slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
             
-            // Mostrar slide actual
             slides[index].classList.add('active');
-            indicators[index].classList.add('active');
-            
+            dots[index].classList.add('active');
             currentIndex = index;
         }
 
@@ -1294,38 +1260,28 @@ document.addEventListener('DOMContentLoaded', function() {
             showSlide(newIndex);
         }
 
-        // Event listeners para flechas
-        nextArrow.addEventListener('click', nextSlide);
-        prevArrow.addEventListener('click', prevSlide);
+        // Eventos
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
 
-        // Event listeners para indicadores
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                showSlide(index);
-                resetAutoPlay();
-            });
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
         });
 
         // Autoplay
         function startAutoPlay() {
-            autoPlayInterval = setInterval(nextSlide, 5000); // Cambia cada 5 segundos
+            autoPlay = setInterval(nextSlide, 4000);
         }
 
-        function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
-            startAutoPlay();
+        function stopAutoPlay() {
+            clearInterval(autoPlay);
         }
 
-        // Pausar autoplay al interactuar
-        carousel.addEventListener('mouseenter', () => {
-            clearInterval(autoPlayInterval);
-        });
+        // Pausar al interactuar
+        const carousel = document.querySelector('.carousel-container');
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
 
-        carousel.addEventListener('mouseleave', () => {
-            startAutoPlay();
-        });
-
-        // Iniciar autoplay
         startAutoPlay();
     });
     </script>
