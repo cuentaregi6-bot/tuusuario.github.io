@@ -828,59 +828,101 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
                 
-                <!-- Producto 2: Lentes Blue Defense -->
-                <div class="product-card">
-                    <div class="product-badge">Nuevo</div>
-                    <img src="7.jpg" alt="Lentes con protección anti luz azul" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Lentes Blue Defense</h3>
-                        <div class="product-price">
-                            <span class="old-price">25</span>
-                            15
-                        </div>
-                        <p class="product-description">Lentes con protección anti luz azul - Ideal para pantallas</p>
-                        <div class="product-actions">
-                            <button class="btn-cart" data-id="2" data-name="Lentes Blue Defense" data-price="15">Añadir al Carrito</button>
-                            <button class="btn-view">Ver Detalles</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Producto 3: Lentes 6 en 1 -->
-                <div class="product-card">
-                    <div class="product-badge">Oferta</div>
-                    <img src="10.jpg" alt="Lentes 6 en 1 multifuncionales" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Lentes 6 en 1</h3>
-                        <div class="product-price">
-                            <span class="old-price">80</span>
-                            55
-                        </div>
-                        <p class="product-description">Lentes multifuncionales con 6 tipos de protección diferentes</p>
-                        <div class="product-actions">
-                            <button class="btn-cart" data-id="3" data-name="Lentes 6 en 1" data-price="55">Añadir al Carrito</button>
-                            <button class="btn-view">Ver Detalles</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Producto 4: Purificador de Agua -->
-                <div class="product-card">
-                    <div class="product-badge">Más Vendido</div>
-                    <img src="14.png" alt="Purificador de agua" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Purificador de Agua</h3>
-                        <div class="product-price">
-                            <span class="old-price">70</span>
-                            35
-                        </div>
-                        <p class="product-description">Agua cristalina y de mejor sabor - Protección contra contaminantes</p>
-                        <div class="product-actions">
-                            <button class="btn-cart" data-id="4" data-name="Purificador de Agua" data-price="35">Añadir al Carrito</button>
-                            <button class="btn-view">Ver Detalles</button>
-                        </div>
-                    </div>
-                </div>
+<div class="product-card">
+    <div class="product-badge">Nuevo</div>
+    <div class="product-carousel">
+        <div class="carousel-images">
+            <img src="7.png" class="carousel-img active" alt="Lentes Blue Defense 1">
+            <img src="8.png" class="carousel-img" alt="Lentes Blue Defense 2">
+            <img src="9.png" class="carousel-img" alt="Lentes Blue Defense 3">
+        </div>
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+    <div class="product-info">
+        <h3 class="product-title">Lentes Blue Defense</h3>
+        <div class="product-price">
+            <span class="old-price">25</span>
+            15
+        </div>
+        <p class="product-description">Lentes con protección anti luz azul - Ideal para pantallas</p>
+        <div class="product-actions">
+            <button class="btn-cart" data-id="2" data-name="Lentes Blue Defense" data-price="15">Añadir al Carrito</button>
+            <button class="btn-view">Ver Detalles</button>
+        </div>
+    </div>
+</div>
+
+<div class="product-card">
+    <div class="product-badge">Oferta</div>
+    <div class="product-carousel">
+        <div class="carousel-images">
+            <img src="10.png" class="carousel-img active" alt="Lentes 6 en 1 - 1">
+            <img src="11.png" class="carousel-img" alt="Lentes 6 en 1 - 2">
+            <img src="12.png" class="carousel-img" alt="Lentes 6 en 1 - 3">
+            <img src="13.png" class="carousel-img" alt="Lentes 6 en 1 - 4">
+        </div>
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+    <div class="product-info">
+        <h3 class="product-title">Lentes 6 en 1</h3>
+        <div class="product-price">
+            <span class="old-price">80</span>
+            55
+        </div>
+        <p class="product-description">Lentes multifuncionales con 6 tipos de protección diferentes</p>
+        <div class="product-actions">
+            <button class="btn-cart" data-id="3" data-name="Lentes 6 en 1" data-price="55">Añadir al Carrito</button>
+            <button class="btn-view">Ver Detalles</button>
+        </div>
+    </div>
+</div>
+
+<div class="product-card">
+    <div class="product-badge">Más Vendido</div>
+    <div class="product-carousel">
+        <div class="carousel-images">
+            <img src="14.png" class="carousel-img active" alt="Purificador 1">
+            <img src="15.png" class="carousel-img" alt="Purificador 2">
+            <img src="16.png" class="carousel-img" alt="Purificador 3">
+            <img src="17.png" class="carousel-img" alt="Purificador 4">
+            <img src="18.png" class="carousel-img" alt="Purificador 5">
+        </div>
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+        <div class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
+    <div class="product-info">
+        <h3 class="product-title">Purificador de Agua</h3>
+        <div class="product-price">
+            <span class="old-price">70</span>
+            35
+        </div>
+        <p class="product-description">Agua cristalina y de mejor sabor - Protección contra contaminantes</p>
+        <div class="product-actions">
+            <button class="btn-cart" data-id="4" data-name="Purificador de Agua" data-price="35">Añadir al Carrito</button>
+            <button class="btn-view">Ver Detalles</button>
+        </div>
+    </div>
+</div>
                 
                 <!-- Producto 5: Máquina Láser -->
                 <div class="product-card">
