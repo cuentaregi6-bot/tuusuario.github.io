@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Tienda Online</title>
+    <title>MITTendu - Tu Tienda de Confianza</title>
     <style>
         :root {
             --primary: #3498db;
@@ -279,11 +279,87 @@
             color: white;
         }
         
-        /* Features Section */
-        .features {
+        /* Locations Section */
+        .locations-section {
             background-color: var(--light);
             padding: 60px 0;
             margin: 60px 0;
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .location-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .location-map {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        .location-info {
+            padding: 20px;
+        }
+        
+        .location-city {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .location-address {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .location-contact {
+            margin-bottom: 15px;
+        }
+        
+        .location-phone {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .btn-map {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-map:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 60px 0;
         }
         
         .features-grid {
@@ -562,13 +638,13 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">Mi<span>Tienda</span></div>
+                <div class="logo">MITT<span>endu</span></div>
                 <nav>
                     <ul>
                         <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Productos</a></li>
-                        <li><a href="#">Ofertas</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#products">Productos</a></li>
+                        <li><a href="#locations">Ubicaciones</a></li>
+                        <li><a href="#contact">Contacto</a></li>
                         <li class="cart-icon" id="cartIcon">
                             🛒 <span class="cart-count">0</span>
                         </li>
@@ -592,96 +668,164 @@
         <div class="container">
             <h2 class="section-title">Productos Destacados</h2>
             <div class="products-grid">
-                <!-- Producto 1 -->
+                <!-- Producto 1: Lentes Multifunción -->
                 <div class="product-card">
                     <div class="product-badge">Nuevo</div>
-                    <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=Producto+1" alt="Producto 1" class="product-image">
+                    <img src="1.png" alt="Lentes multifunción que cambian con el sol" class="product-image">
                     <div class="product-info">
-                        <h3 class="product-title">Auriculares Inalámbricos</h3>
+                        <h3 class="product-title">Lentes Multifunción</h3>
                         <div class="product-price">
-                            <span class="old-price">$59.99</span>
-                            $39.99
+                            <span class="old-price">40</span>
+                            25
                         </div>
-                        <p class="product-description">Auriculares con cancelación de ruido y 20h de batería. Calidad de sonido premium.</p>
+                        <p class="product-description">Lentes que cambian con el sol - Protección UV y estilo moderno</p>
                         <div class="product-actions">
-                            <button class="btn-cart" data-id="1" data-name="Auriculares Inalámbricos" data-price="39.99">Añadir al Carrito</button>
+                            <button class="btn-cart" data-id="1" data-name="Lentes Multifunción" data-price="25">Añadir al Carrito</button>
                             <button class="btn-view">Ver Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 2 -->
+                <!-- Producto 2: Lentes Blue Defense -->
+                <div class="product-card">
+                    <div class="product-badge">Nuevo</div>
+                    <img src="7.png" alt="Lentes con protección anti luz azul" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Lentes Blue Defense</h3>
+                        <div class="product-price">
+                            <span class="old-price">25</span>
+                            15
+                        </div>
+                        <p class="product-description">Lentes con protección anti luz azul - Ideal para pantallas</p>
+                        <div class="product-actions">
+                            <button class="btn-cart" data-id="2" data-name="Lentes Blue Defense" data-price="15">Añadir al Carrito</button>
+                            <button class="btn-view">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 3: Lentes 6 en 1 -->
                 <div class="product-card">
                     <div class="product-badge">Oferta</div>
-                    <img src="https://via.placeholder.com/300x200/e74c3c/ffffff?text=Producto+2" alt="Producto 2" class="product-image">
+                    <img src="10.png" alt="Lentes 6 en 1 multifuncionales" class="product-image">
                     <div class="product-info">
-                        <h3 class="product-title">Smartwatch Deportivo</h3>
+                        <h3 class="product-title">Lentes 6 en 1</h3>
                         <div class="product-price">
-                            <span class="old-price">$129.99</span>
-                            $89.99
+                            <span class="old-price">80</span>
+                            55
                         </div>
-                        <p class="product-description">Monitor de actividad, frecuencia cardiaca y notificaciones inteligentes. Resistente al agua.</p>
+                        <p class="product-description">Lentes multifuncionales con 6 tipos de protección diferentes</p>
                         <div class="product-actions">
-                            <button class="btn-cart" data-id="2" data-name="Smartwatch Deportivo" data-price="89.99">Añadir al Carrito</button>
+                            <button class="btn-cart" data-id="3" data-name="Lentes 6 en 1" data-price="55">Añadir al Carrito</button>
                             <button class="btn-view">Ver Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 3 -->
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=Producto+3" alt="Producto 3" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Tablet 10 Pulgadas</h3>
-                        <div class="product-price">$199.99</div>
-                        <p class="product-description">Pantalla Full HD, 64GB de almacenamiento, perfecta para trabajo y entretenimiento.</p>
-                        <div class="product-actions">
-                            <button class="btn-cart" data-id="3" data-name="Tablet 10 Pulgadas" data-price="199.99">Añadir al Carrito</button>
-                            <button class="btn-view">Ver Detalles</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Producto 4 -->
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/9b59b6/ffffff?text=Producto+4" alt="Producto 4" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Altavoz Bluetooth</h3>
-                        <div class="product-price">$49.99</div>
-                        <p class="product-description">Sonido estéreo de 20W, batería de 12h, resistente al agua IPX7. Ideal para exteriores.</p>
-                        <div class="product-actions">
-                            <button class="btn-cart" data-id="4" data-name="Altavoz Bluetooth" data-price="49.99">Añadir al Carrito</button>
-                            <button class="btn-view">Ver Detalles</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Producto 5 -->
+                <!-- Producto 4: Purificador de Agua -->
                 <div class="product-card">
                     <div class="product-badge">Más Vendido</div>
-                    <img src="https://via.placeholder.com/300x200/f39c12/ffffff?text=Producto+5" alt="Producto 5" class="product-image">
+                    <img src="14.png" alt="Purificador de agua" class="product-image">
                     <div class="product-info">
-                        <h3 class="product-title">Cámara Deportiva</h3>
-                        <div class="product-price">$149.99</div>
-                        <p class="product-description">4K Ultra HD, resistente al agua, wide angle. Perfecta para capturar tus aventuras.</p>
+                        <h3 class="product-title">Purificador de Agua</h3>
+                        <div class="product-price">
+                            <span class="old-price">70</span>
+                            35
+                        </div>
+                        <p class="product-description">Agua cristalina y de mejor sabor - Protección contra contaminantes</p>
                         <div class="product-actions">
-                            <button class="btn-cart" data-id="5" data-name="Cámara Deportiva" data-price="149.99">Añadir al Carrito</button>
+                            <button class="btn-cart" data-id="4" data-name="Purificador de Agua" data-price="35">Añadir al Carrito</button>
                             <button class="btn-view">Ver Detalles</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Producto 6 -->
+                <!-- Producto 5: Máquina Láser -->
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/1abc9c/ffffff?text=Producto+6" alt="Producto 6" class="product-image">
+                    <div class="product-badge">Nuevo</div>
+                    <img src="19.png" alt="Máquina de grabado y corte láser" class="product-image">
                     <div class="product-info">
-                        <h3 class="product-title">Teclado Mecánico</h3>
-                        <div class="product-price">$79.99</div>
-                        <p class="product-description">Retroiluminación RGB, switches azules, diseño ergonómico para gaming y trabajo.</p>
+                        <h3 class="product-title">Máquina Láser</h3>
+                        <div class="product-price">
+                            <span class="old-price">2000</span>
+                            1500
+                        </div>
+                        <p class="product-description">Máquina profesional para grabado y corte láser en múltiples materiales</p>
                         <div class="product-actions">
-                            <button class="btn-cart" data-id="6" data-name="Teclado Mecánico" data-price="79.99">Añadir al Carrito</button>
+                            <button class="btn-cart" data-id="5" data-name="Máquina Láser" data-price="1500">Añadir al Carrito</button>
                             <button class="btn-view">Ver Detalles</button>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 6: Telescopio -->
+                <div class="product-card">
+                    <div class="product-badge">Oferta</div>
+                    <img src="20.png" alt="Telescopio astronómico profesional" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Telescopio Astronómico</h3>
+                        <div class="product-price">
+                            <span class="old-price">100</span>
+                            80
+                        </div>
+                        <p class="product-description">Telescopio profesional para observación astronómica - Modelo F70300</p>
+                        <div class="product-actions">
+                            <button class="btn-cart" data-id="6" data-name="Telescopio Astronómico" data-price="80">Añadir al Carrito</button>
+                            <button class="btn-view">Ver Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations-section" id="locations">
+        <div class="container">
+            <h2 class="section-title">Nuestras Ubicaciones</h2>
+            <div class="locations-grid">
+                <!-- Lima -->
+                <div class="location-card">
+                    <div class="location-map">
+                        📍 Lima
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-city">Lima</h3>
+                        <p class="location-address">Av. Canada 3711, Lima</p>
+                        <div class="location-contact">
+                            <div class="location-phone">📞 938987642</div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/JDJvmb8skmmPXGxX6" target="_blank" class="btn-map">Cómo Llegar</a>
+                    </div>
+                </div>
+                
+                <!-- Piura -->
+                <div class="location-card">
+                    <div class="location-map">
+                        📍 Piura
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-city">Piura</h3>
+                        <p class="location-address">Centro de Piura</p>
+                        <div class="location-contact">
+                            <div class="location-phone">📞 900030047</div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/uTwWa2hAZ9zWszwm7" target="_blank" class="btn-map">Cómo Llegar</a>
+                    </div>
+                </div>
+                
+                <!-- Cajamarca -->
+                <div class="location-card">
+                    <div class="location-map">
+                        📍 Cajamarca
+                    </div>
+                    <div class="location-info">
+                        <h3 class="location-city">Cajamarca</h3>
+                        <p class="location-address">Centro de Cajamarca</p>
+                        <div class="location-contact">
+                            <div class="location-phone">📞 900030047</div>
+                        </div>
+                        <a href="https://maps.google.com/?q=-7.1530288,-78.5220832" target="_blank" class="btn-map">Cómo Llegar</a>
                     </div>
                 </div>
             </div>
@@ -695,7 +839,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">🚚</div>
                     <h3 class="feature-title">Envío Gratis</h3>
-                    <p>En compras superiores a $50. Recibe tu pedido en 24-48h.</p>
+                    <p>En compras superiores a 50. Recibe tu pedido en 24-48h.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">↩️</div>
@@ -717,7 +861,7 @@
     </section>
 
     <!-- Newsletter -->
-    <section class="newsletter">
+    <section class="newsletter" id="contact">
         <div class="container">
             <h2>Suscríbete a Nuestro Boletín</h2>
             <p>Recibe ofertas exclusivas, novedades de productos y descuentos especiales antes que nadie.</p>
@@ -733,7 +877,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>MiTienda</h3>
+                    <h3>MITTendu</h3>
                     <p>Tu destino para encontrar los mejores productos al mejor precio. Calidad y servicio garantizados.</p>
                     <div class="social-links">
                         <a href="#">FB</a>
@@ -746,34 +890,32 @@
                     <h3>Enlaces Rápidos</h3>
                     <ul>
                         <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Productos</a></li>
-                        <li><a href="#">Ofertas</a></li>
-                        <li><a href="#">Nuevos Lanzamientos</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#products">Productos</a></li>
+                        <li><a href="#locations">Ubicaciones</a></li>
+                        <li><a href="#contact">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Categorías</h3>
                     <ul>
+                        <li><a href="#">Lentes</a></li>
                         <li><a href="#">Electrónica</a></li>
                         <li><a href="#">Hogar</a></li>
-                        <li><a href="#">Deportes</a></li>
-                        <li><a href="#">Moda</a></li>
-                        <li><a href="#">Juguetes</a></li>
+                        <li><a href="#">Instrumentos</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <ul>
-                        <li>📍 Calle Principal 123, Ciudad</li>
-                        <li>📞 +1 234 567 890</li>
-                        <li>✉️ info@mitienda.com</li>
+                        <li>📍 Lima: 938987642</li>
+                        <li>📍 Piura/Cajamarca: 900030047</li>
+                        <li>✉️ info@mittendu.com</li>
                         <li>🕒 Lun-Vie: 9:00-18:00</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 MiTienda. Todos los derechos reservados.</p>
+                <p>&copy; 2024 MITTendu. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -790,7 +932,7 @@
         </div>
         <div class="cart-total">
             <span>Total:</span>
-            <span id="cartTotal">$0.00</span>
+            <span id="cartTotal">0.00</span>
         </div>
     </div>
 
@@ -879,7 +1021,7 @@
                         <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
                             <div>
                                 <h4 style="margin: 0 0 5px;">${item.name}</h4>
-                                <p style="margin: 0; color: #e74c3c; font-weight: bold;">$${item.price.toFixed(2)}</p>
+                                <p style="margin: 0; color: #e74c3c; font-weight: bold;">${item.price}</p>
                             </div>
                             <div style="display: flex; align-items: center;">
                                 <button class="btn-quantity" data-id="${item.id}" data-action="decrease">-</button>
@@ -894,7 +1036,7 @@
             }
             
             // Actualizar total
-            cartTotal.textContent = `$${total.toFixed(2)}`;
+            cartTotal.textContent = `${total.toFixed(2)}`;
             
             // Añadir event listeners a los botones de cantidad y eliminar
             document.querySelectorAll('.btn-quantity').forEach(button => {
